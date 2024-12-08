@@ -1,0 +1,16 @@
+{
+  "name": "aoc2024",
+  "version": "1.0.0",
+  "description": "Welcome to the Advent of Code 2024! This repository contains my solutions to the challenges presented throughout the event. Advent of Code is an annual online event where participants are given a series of programming puzzles to solve every day from December 1st until December 25th.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^22.10.1",
+    "typescript": "^5.7.2"
+  }
+}

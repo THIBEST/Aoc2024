@@ -8,4 +8,4 @@ Advent of Code is created by Eric Wastl and is designed to present two new codin
 
 ## Structure of this Repository
 
-Each day's challenges are organized into separate directories, named Day01, Day02, etc., up to Day25.
+The src folder contains the source code (ts) for each day's challenge. Each file is named dayX - challengeName.ts where X is the day number, and challengeName is the name of the challenge.
