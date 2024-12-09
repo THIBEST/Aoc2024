@@ -87,5 +87,5 @@ const historianHysteriaP2 = (): number => {
   return calculateSimilarity(leftList, rightList);
 };
 
-console.log(`Part 1: ${historianHysteriaP1()}`);
-console.log(`Part 2: ${historianHysteriaP2()}`);
+console.log("Part 1:", historianHysteriaP1());
+console.log("Part 2:", historianHysteriaP2());
