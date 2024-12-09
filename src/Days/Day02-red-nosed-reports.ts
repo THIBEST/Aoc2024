@@ -1,4 +1,4 @@
-import { getDataLines } from "./utils";
+import { getDataLines } from "../utils";
 
 const dataLines = getDataLines();
 
