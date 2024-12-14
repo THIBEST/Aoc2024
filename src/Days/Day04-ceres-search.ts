@@ -3,6 +3,8 @@ import { getDataLines } from "../utils";
 const dataLines = getDataLines();
 const allLetters: string[][] = dataLines.map((line) => line.split(""));
 
+type XMASPattern = { [key: string]: string };
+
 /**
  * Check the presence of the XMAS pattern in a list of letters.
  * @param letters The list of letters.
@@ -13,6 +15,23 @@ const checkXMASPatternPresence = (letters: string[]): number => {
   const howManyXMAS = lettersJoined.match(/XMAS/g)?.length || 0;
   const howManySAMX = lettersJoined.match(/SAMX/g)?.length || 0;
   return howManyXMAS + howManySAMX;
+};
+
+/**
+ * Check the presence of the X-MAS pattern in a list of letters.
+ * @param letters The list of letters.
+ * @returns True if the pattern is present, false otherwise.
+ */
+const checkX_MASPatternPresence = (letters: XMASPattern): boolean => {
+  const topLeft = letters["topLeft"];
+  const topRight = letters["topRight"];
+  const bottomLeft = letters["bottomLeft"];
+  const bottomRight = letters["bottomRight"];
+  const centerCell = letters["centerCell"];
+  return !!(
+    [topLeft, centerCell, bottomRight].join("").match(/MAS|SAM/) &&
+    [topRight, centerCell, bottomLeft].join("").match(/MAS|SAM/)
+  );
 };
 
 /**
@@ -95,4 +114,38 @@ const checkDiagonals = (): number =>
 const cereSearchP1 = (): number =>
   checkRows() + checkColumns() + checkDiagonals();
 
+/**
+ * The second part of the Ceres Search challenge.
+ * Looks for an "X" pattern where:
+ * M  M
+ *  A
+ * S  S
+ * Both diagonals must form either "MAS" or "SAM".
+ * @returns The number of times the X-MAS pattern is present.
+ */
+const cereSearchP2 = (): number => {
+  let totalOccurences = 0;
+  for (let i = 1; i < allLetters.length - 1; i++) {
+    for (let j = 1; j < allLetters[i].length - 1; j++) {
+      const currentX: XMASPattern = {
+        centerCell: allLetters[i][j],
+      };
+      if (currentX.centerCell !== "A") {
+        continue;
+      }
+
+      currentX.topLeft = allLetters[i - 1][j - 1];
+      currentX.topRight = allLetters[i - 1][j + 1];
+      currentX.bottomLeft = allLetters[i + 1][j - 1];
+      currentX.bottomRight = allLetters[i + 1][j + 1];
+
+      if (checkX_MASPatternPresence(currentX)) {
+        totalOccurences++;
+      }
+    }
+  }
+  return totalOccurences;
+};
+
 console.log("Ceres Search P1:", cereSearchP1());
+console.log("Ceres Search P2:", cereSearchP2());
