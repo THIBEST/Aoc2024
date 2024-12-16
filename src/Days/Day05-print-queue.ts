@@ -6,7 +6,7 @@ const updates = dataLines.filter((x) => x.includes(","));
 const rules = dataLines.filter((x) => x.includes("|"));
 
 /**
- * Create a map of rules dependencies ().
+ * Create a map of rules dependencies.
  * @param rules The rules to process.
  * @returns A map of rules dependencies.
  */
